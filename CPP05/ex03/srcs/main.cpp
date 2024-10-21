@@ -6,43 +6,47 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 13:24:16 by lpr               #+#    #+#             */
-/*   Updated: 2024/10/21 13:36:32 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:02:44 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Bureaucrat.hpp"
+#include "../includes/AForm.hpp"
+#include "../includes/Bureaucrat.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/Intern.hpp"
 
 int main()
 {
     try {
-        std::cout << "\n ------billy------ " << std::endl;
-        Bureaucrat billy("billy", 149);
-        std::cout << billy << std::endl;
-        billy.downGrade();
-        std::cout << billy << std::endl;
-        billy.downGrade();
-        std::cout << billy << std::endl;
+        AForm *MyForm;
+        Intern CoffeeGuy;
+        MyForm = CoffeeGuy.makeForm("robotomy request", "Bender");
+        std::cout << *MyForm << std::endl;
+        std::cout << "----------------" << std::endl;
+        Bureaucrat tom("tom", 15);
+        std::cout << tom << std::endl;
+        MyForm->beSigned(tom);
+        tom.executeForm(*MyForm);
+        delete MyForm;
+        
     } catch (const Bureaucrat::GradeTooHighException& e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
     } catch (const Bureaucrat::GradeTooLowException& e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
-    try {
-        std::cout << "\n ------tom------- " << std::endl;
-        Bureaucrat tom("tom", 2);
-        std::cout << tom << std::endl;
-        tom.upGrade();
-        std::cout << tom << std::endl;
-        tom.upGrade();
-        std::cout << tom << std::endl;
-    } catch (const Bureaucrat::GradeTooHighException& e)
+    } catch (const AForm::GradeTooHighException& e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
-    } catch (const Bureaucrat::GradeTooLowException& e)
+    } catch (const AForm::GradeTooLowException& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    } catch (const AForm::FormNotSignedException& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    } catch (const Intern::UnknownFormException& e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AAForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:20:56 by lpr               #+#    #+#             */
-/*   Updated: 2024/10/21 14:53:49 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:28:14 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include <string>
@@ -19,14 +19,14 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     public:
-        Form();
-        Form(std::string name, int gradeToSign, int gradeToExec);
-        ~Form();
-        Form(const Form& other);
-        Form& operator=(const Form& other);
+        AForm();
+        AForm(std::string name, int gradeToSign, int gradeToExec);
+        ~AForm();
+        AForm(const AForm& other);
+        AForm& operator=(const AForm& other);
 
         class GradeTooLowException : public std::exception 
         {
@@ -44,12 +44,21 @@ class Form
                     return "Grade is too high";
                 }
         };
+        class FormNotSignedException : public std::exception
+        {
+            public :
+                virtual const char* what() const throw()
+                {
+                    return "Form is not signed";
+                }
+        };
 
         std::string getName() const;
         int getGradeToSign() const;
         int getGradeToExec() const;
         std::string getStatus() const;
         void beSigned(Bureaucrat& bureaucrat);
+        virtual void execute(Bureaucrat const &executor) const = 0;
     
     private:
         std::string const name;
@@ -58,6 +67,6 @@ class Form
         int const gradeToExec;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& Aform);
 
 #endif
