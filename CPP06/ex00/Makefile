@@ -8,11 +8,12 @@ INCLUDE_DIR = includes
 OBJS_DIR = build
 
 SRC_FILES = ScalarConverter \
+			Utils \
 			main
 SRCS = $(addprefix $(SRCS_DIR)/,$(addsuffix .cpp,$(SRC_FILES)))
 OBJS = $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 DEPS = $(OBJS:.o=.d)
-NAME = bureaucrat
+NAME = Convert
 
 all: $(NAME)
 

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   Main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 15:41:33 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/10/24 16:09:15 by lle-pier         ###   ########.fr       */
+/*   Created: 2024/10/24 15:53:35 by lle-pier          #+#    #+#             */
+/*   Updated: 2024/10/24 16:09:45 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Main.hpp"
+#ifndef MAIN_HPP
+#define MAIN_HPP
 
-void ScalarConverter::convert(const std::string str)
-{
-    if (is_int(str))
-        to_int(str);
-    else if (is_double(str))
-        std::cout << "double" << std::endl;
-    else if (is_float(str))
-        std::cout << "float" << std::endl;
-    else if (is_char(str))
-        to_char(str);
-}
+#include <iostream>
+
+#include "./ScalarConverter.hpp"
+
+void to_char(const std::string str);
+void to_int(const std::string str);
+bool my_isdigit(char c);
+int stringToInt(const std::string& str);
+bool is_int(const std::string str);
+bool is_float(const std::string str);
+bool is_double(const std::string str);
+bool is_char(const std::string str);
+
+#endif
