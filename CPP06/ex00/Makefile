@@ -7,7 +7,7 @@ SRCS_DIR = srcs
 INCLUDE_DIR = includes
 OBJS_DIR = build
 
-SRC_FILES = Bureaucrat \
+SRC_FILES = ScalarConverter \
 			main
 SRCS = $(addprefix $(SRCS_DIR)/,$(addsuffix .cpp,$(SRC_FILES)))
 OBJS = $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
