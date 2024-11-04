@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:41:33 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/10/24 16:09:15 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:09:53 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 void ScalarConverter::convert(const std::string str)
 {
     if (is_int(str))
-        to_int(str);
+        toInt(str);
     else if (is_double(str))
-        std::cout << "double" << std::endl;
+        toDouble(str);
     else if (is_float(str))
-        std::cout << "float" << std::endl;
+        toFloat(str);
     else if (is_char(str))
-        to_char(str);
+        toChar(str);
+    else
+        std::cout << "non printable" << std::endl; 
 }
