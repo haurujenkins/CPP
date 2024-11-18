@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:01:42 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:12:02 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:23:22 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void toDouble(const std::string str)
         std::cout << "char : " << "Non displayable" << std::endl;
     else
         std::cout << "char : " << charValue << std::endl;
-    std::cout << "double : " << d << std::endl;
     std::cout << "float : " << floatValue << std::endl;
+    std::cout << "double : " << d << std::endl;
     std::cout << "int : " << intValue << std::endl;
 }
 

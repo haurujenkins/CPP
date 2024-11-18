@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:59:19 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:13:43 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:21:52 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void toFloat(const std::string str)
         std::cout << "char : " << "Non displayable" << std::endl;
         float f = strtof(str.c_str(), NULL);
         std::cout << "float : " << f << std::endl;
-        double d = strtod(str.c_str(), NULL);
+        double d = static_cast<double>(f);
         std::cout << "double : " << d << std::endl;
         std::cout << "int : " << "impossible" << std::endl;
         return;
@@ -36,8 +36,8 @@ void toFloat(const std::string str)
         std::cout << "char : " << "Non displayable" << std::endl;
     else
         std::cout << "char : " << charValue << std::endl;
-    std::cout << "double : " << f << std::endl;
-    std::cout << "float : " << doubleValue << std::endl;
+    std::cout << "float : " << f << std::endl;
+    std::cout << "double : " << doubleValue << std::endl;
     std::cout << "int : " << intValue << std::endl;
 }
 
