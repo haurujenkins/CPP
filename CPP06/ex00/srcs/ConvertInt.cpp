@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int.cpp                                            :+:      :+:    :+:   */
+/*   ConvertInt.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:02:20 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:02:55 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:13:21 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ int stringToInt(const std::string& str)
     int result = 0, sign = 1;
     std::size_t i = 0, len = ft_strlen(str);
 
-    if (str[0] == '-') {
+    if (str[0] == '-')
+    {
         sign = -1;
         i = 1;
     }
 
-    for (; i < len; ++i) {
-        if (str[i] >= '0' && str[i] <= '9') {
+    for (; i < len; ++i)
+    {
+        if (str[i] >= '0' && str[i] <= '9')
             result = result * 10 + (str[i] - '0');
-        } else {
+        else
+        {
             std::cerr << "Erreur : caractère non numérique trouvé !" << std::endl;
             return 0;
         }
