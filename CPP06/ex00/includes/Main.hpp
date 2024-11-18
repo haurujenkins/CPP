@@ -6,14 +6,18 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:53:35 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/04 15:02:06 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:07:26 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
+#include <string>
 #include <iostream>
+#include <cmath>
+#include <stdexcept>
+#include <limits>
 
 #include "./ScalarConverter.hpp"
 
@@ -27,5 +31,7 @@ bool is_int(const std::string str);
 bool is_float(const std::string& str);
 bool is_double(const std::string str);
 bool is_char(const std::string str);
+bool caseInsensitiveCompare(const std::string& str1, const std::string& str2);
+std::size_t ft_strlen(const std::string str);
 
 #endif
