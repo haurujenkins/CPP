@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:02:20 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:13:21 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:32:07 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void toInt(const std::string str)
     else
         std::cout << "char : " << charValue << std::endl;
     std::cout << "int : " << i << std::endl;
-    std::cout << "float : " << floatValue << std::endl;
-    std::cout << "double : " << doubleValue << std::endl;
+    std::cout << std::fixed << std::setprecision(1) << "float : " << floatValue << "f" << std::endl;
+    std::cout << std::fixed << std::setprecision(1) << "double : " << doubleValue << std::endl;
 }

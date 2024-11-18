@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:01:42 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:23:22 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:31:04 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void toDouble(const std::string str)
     if (str == "-inf" || str == "+inf" || str == "nan")
     {
         std::cout << "char : " << "Non displayable" << std::endl;
-        float f = strtof(str.c_str(), NULL);
-        std::cout << "float : " << f << std::endl;
-        double d = strtod(str.c_str(), NULL);
-        std::cout << "double : " << d << std::endl;
         std::cout << "int : " << "impossible" << std::endl;
+        float f = strtof(str.c_str(), NULL);
+        std::cout << std::fixed << std::setprecision(1) << "float : " << f << "f" << std::endl;
+        double d = strtod(str.c_str(), NULL);
+        std::cout << std::fixed << std::setprecision(1) << "double : " << d << std::endl;
         return;
     }
     double d = strtod(str.c_str(), NULL);
@@ -35,9 +35,9 @@ void toDouble(const std::string str)
         std::cout << "char : " << "Non displayable" << std::endl;
     else
         std::cout << "char : " << charValue << std::endl;
-    std::cout << "float : " << floatValue << std::endl;
-    std::cout << "double : " << d << std::endl;
     std::cout << "int : " << intValue << std::endl;
+    std::cout << std::fixed << std::setprecision(1) << "float : " << floatValue << "f" << std::endl;
+    std::cout << std::fixed << std::setprecision(1) << "double : " << d << std::endl;
 }
 
 bool is_double(const std::string str)

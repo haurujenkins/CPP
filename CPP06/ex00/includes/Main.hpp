@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:53:35 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:07:26 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:27:46 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <limits>
+#include <iomanip>
 
 #include "./ScalarConverter.hpp"
 
