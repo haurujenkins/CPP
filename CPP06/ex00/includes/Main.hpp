@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:53:35 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/11/18 17:27:46 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:57:25 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <stdexcept>
 #include <limits>
 #include <iomanip>
+#include <climits>
+#include <float.h>
 
 #include "./ScalarConverter.hpp"
 
@@ -34,5 +36,7 @@ bool is_double(const std::string str);
 bool is_char(const std::string str);
 bool caseInsensitiveCompare(const std::string& str1, const std::string& str2);
 std::size_t ft_strlen(const std::string str);
+int isInteger(double num);
+bool isScientificNotation(double number);
 
 #endif
