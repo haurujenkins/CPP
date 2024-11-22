@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:41:26 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/10/24 16:04:28 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:17:01 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 class ScalarConverter
 {
+    private:
+        ScalarConverter();
     public:
         static void convert(const std::string str);
 };
