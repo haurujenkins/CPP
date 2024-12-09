@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:27:29 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/12/09 11:02:39 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:49:41 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int stringToInt(const std::string &str)
     {
         throw std::runtime_error("Error: Invalid number format");
     }
+    if (result > 9)
+        throw std::runtime_error("Error: numbers must be lower than 10");
     return(result);
 }
 
@@ -44,14 +46,14 @@ int RPN::evaluate(const std::string &expression)
             if (token == "+")
                 stack.push(a + b);
             else if (token == "-")
-                stack.push(a - b);
+                stack.push(b - a);
             else if (token == "*")
                 stack.push(a * b);
             else if (token == "/")
             {
                 if (b == 0)
                     throw std::runtime_error("Error: Division by zero");
-                stack.push(a / b);
+                stack.push(b / a);
             }
         }
         else 
