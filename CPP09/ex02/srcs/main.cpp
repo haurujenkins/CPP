@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:52:11 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/12/09 13:42:19 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:19:49 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc < 2)
+    if (argc < 1)
     {
         std::cerr << "Error: need integers to work" << std::endl;
         return 0;
