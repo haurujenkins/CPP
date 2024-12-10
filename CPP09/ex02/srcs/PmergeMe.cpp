@@ -6,7 +6,7 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:51:57 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/12/10 15:01:54 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:04:38 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,9 @@ double measureSortTime(Container& container)
     //clock_t start = clock();
     fordJohnsonSort(container);
     gettimeofday(&end, NULL);
-    long seconds = end.tv_sec - start.tv_sec;
     long microseconds = end.tv_usec - start.tv_usec;
     if (microseconds < 0)
     {
-        seconds -= 1;
         microseconds += 1000000;
     }
     double elapsed = microseconds;
