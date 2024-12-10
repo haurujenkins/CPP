@@ -6,15 +6,11 @@
 /*   By: lle-pier <lle-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:51:57 by lle-pier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:19:29 by lle-pier         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:01:54 by lle-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
-
-// print list | ok
-// afficher les entiers tries | 
-// calcul du temps passe | ok
 
 int myAtoi(const char* str)
 {
@@ -41,83 +37,106 @@ int myAtoi(const char* str)
     return result;
 }
 
-// Fonction pour calculer les nombres de Jacobsthal
 template <typename Container>
-Container generateJacobsthalSequence(int size) {
+Container generateJacobsthalSequence(int size)
+{
     Container jacobsthal;
-    int a = 0, b = 1; // Jacobsthal de base
+    int a = 0, b = 1;
+    
     jacobsthal.push_back(a);
     if (size > 1) jacobsthal.push_back(b);
-    for (int i = 2; i < size; ++i) {
+    for (int i = 2; i < size;)
+    {
         int next = b + 2 * a; // Jacobsthal(n) = Jacobsthal(n-1) + 2*Jacobsthal(n-2)
         jacobsthal.push_back(next);
         a = b;
         b = next;
+        i = next;
     }
     return jacobsthal;
 }
 
-// Insère un élément dans un container trié à la bonne position
 template <typename Container>
-void insertIntoSorted(Container& sortedList, typename Container::value_type value) {
+void insertIntoSorted(Container& sortedList, typename Container::value_type value)
+{
     typename Container::iterator it = sortedList.begin();
-    while (it != sortedList.end() && *it < value) {
+    while (it != sortedList.end() && *it < value)
+    {
         ++it;
     }
-    sortedList.insert(it, value); // Insère dans l'ordre croissant
+    sortedList.insert(it, value);
 }
 
-// Implémentation de Ford-Johnson Sort
 template <typename Container>
-void fordJohnsonSort(Container& container) {
-    if (container.size() < 2) return; // Rien à trier si la taille est < 2
+void fordJohnsonSort(Container& container)
+{
+    if (container.size() < 2) return;
 
-    // Étape 1 : Trier les paires
     Container small, large;
-    for (size_t i = 0; i + 1 < container.size(); i += 2) {
-        if (container[i] < container[i + 1]) {
+    
+    for (size_t i = 0; i + 1 < container.size(); i += 2)
+    {
+        if (container[i] < container[i + 1])
+        {
             small.push_back(container[i]);
             large.push_back(container[i + 1]);
-        } else {
+        } else
+        {
             small.push_back(container[i + 1]);
             large.push_back(container[i]);
         }
     }
-    if (container.size() % 2 != 0) { // Si la taille est impaire, ajouter le dernier élément à la fin
+    if (container.size() % 2 != 0) 
+    {
         large.push_back(container.back());
     }
 
-    // Étape 2 : Trier les "small" avec std::sort (ou un autre tri récursif si nécessaire)
     std::sort(small.begin(), small.end());
 
-    // Étape 3 : Insérer les "large" dans la liste triée (en utilisant les indices Jacobsthal)
     Container jacobsthal = generateJacobsthalSequence<Container>(large.size());
-    for (size_t i = 0; i < large.size(); ++i) {
-        size_t index = (i < jacobsthal.size()) ? jacobsthal[i] : i; // Indice basé sur Jacobsthal
-        if (index >= small.size()) index = small.size();        // Éviter un dépassement
+    size_t index;
+    for (size_t i = 0; i < large.size(); ++i)
+    {
+        if (i < jacobsthal.size())
+            index = jacobsthal[i];
+        else
+            index = i;
+        if (index >= small.size()) index = small.size();
         insertIntoSorted(small, large[i]);
     }
-
-    // Remplacer le container original par le résultat trié
     container = small;
 }
 
-// Fonction pour afficher un container
 template <typename Container>
-void printContainer(const Container& container) {
+void printContainer(const Container& container)
+{
     std::cout << "[ ";
-    for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it) {
+    for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it)
+    {
         std::cout << *it << " ";
     }
     std::cout << "]" << std::endl;
 }
 
 template <typename Container>
-double measureSortTime(Container& container) {
-    clock_t start = clock();  // Commence la mesure du temps
+double measureSortTime(Container& container)
+{
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
+    //clock_t start = clock();
     fordJohnsonSort(container);
-    clock_t end = clock();  // Fin de la mesure du temps
-    return static_cast<double>(end - start) / CLOCKS_PER_SEC;  // Temps en secondes
+    gettimeofday(&end, NULL);
+    long seconds = end.tv_sec - start.tv_sec;
+    long microseconds = end.tv_usec - start.tv_usec;
+    if (microseconds < 0)
+    {
+        seconds -= 1;
+        microseconds += 1000000;
+    }
+    double elapsed = microseconds;
+    //clock_t end = clock();
+    //return static_cast<double>(end - start) / CLOCKS_PER_SEC;
+    return elapsed;
 }
 
 double  sortListVector(int argc, char *argv[])
@@ -154,7 +173,6 @@ double  sortListDeque(int argc, char *argv[])
 
 void    PmergeMe::sortList(int argc, char *argv[])
 {
-
     for (int i = 1; i < argc; i++)
         myAtoi(argv[i]);
     std::cout << "\nBefore : [ ";
@@ -165,5 +183,5 @@ void    PmergeMe::sortList(int argc, char *argv[])
     double v_time = sortListVector(argc, argv);
     double d_time = sortListDeque(argc, argv);
     std::cout << "\nTime past:\n[std::vector]: " << v_time << " ms" << std::endl;
-    std::cout << "[std::list]: " << d_time << " ms" << std::endl;
+    std::cout << "[std::deque]: " << d_time << " ms" << std::endl;
 }
